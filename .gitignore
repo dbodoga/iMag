@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+**/coverage/
+**/TestResults/
+.env
+**/.env.local
+**/appsettings.Local.json
+.vs/
+.idea/
+*.user
+*.log
+playwright-report/
+test-results/
