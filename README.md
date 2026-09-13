@@ -28,6 +28,18 @@ Versiunile exacte sunt fixate în fișierele de proiect și în lockfile-uri. Au
 
 La prima pornire, backend-ul aplică migrarea și adaugă trei categorii: **Telefoane**, **Laptopuri**, **Accesorii**. Sunt incluse iPhone 17, Samsung Galaxy S25, MacBook Pro M4, ASUS Zenbook 14, AirPods Pro și Logitech MX Master 3S. Repornirea nu dublează produsele.
 
+## Pornire rapida pe Windows
+
+Dupa instalarea Docker Desktop, .NET 10 SDK si Node.js 24 LTS, fa **dublu clic pe `Start-iMag.cmd`** din folderul principal al proiectului.
+
+Scriptul verifica programele si porturile, porneste Docker Desktop daca este necesar, porneste PostgreSQL, instaleaza dependentele frontend la prima rulare sau dupa schimbarea lockfile-ului si asteapta ca backend-ul si frontend-ul sa fie pregatite. La final deschide automat http://localhost:5189 in browser. Prima pornire necesita internet si poate dura cateva minute.
+
+**Lasa fereastra scriptului deschisa. Apasa ENTER in ea pentru a opri backend-ul si frontend-ul.** PostgreSQL ramane pornit si datele se pastreaza; il poti opri separat cu `docker compose stop` din folderul proiectului.
+
+Erorile serverelor sunt salvate in folderul `.imag-run`. Daca portul 5188 sau 5189 este deja ocupat, scriptul afiseaza un mesaj si nu opreste alte aplicatii. Nu rula simultan scriptul si comenzile de pornire manuala de mai jos.
+
+Alternativ, din PowerShell: `powershell -NoProfile -ExecutionPolicy Bypass -File .\Start-iMag.ps1`. Optiunea se aplica doar procesului curent, fara modificarea politicii Windows. Pentru verificare fara pornire foloseste `-CheckOnly`; pentru o verificare automata a pornirii si opririi foloseste `-SmokeTest`; `-NoBrowser` nu deschide browserul. Daca porturile implicite sunt ocupate, poti adauga `-BackendPort 5198 -FrontendPort 5199`; scriptul configureaza automat si conexiunea frontend-backend. Daca Windows blocheaza fisierele descarcate, foloseste Properties / Unblock pentru arhiva descarcata din propriul repository, apoi extrage din nou proiectul.
+
 ## 1. Pregătește PC-ul
 
 Instalează:

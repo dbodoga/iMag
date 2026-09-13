@@ -13,3 +13,4 @@
 *.log
 playwright-report/
 test-results/
+.imag-run/
